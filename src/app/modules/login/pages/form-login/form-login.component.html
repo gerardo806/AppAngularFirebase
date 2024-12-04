@@ -1,0 +1,35 @@
+<article class="row">
+  <section class="col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-12">
+    <form autocomplete="off" [formGroup]="_formGroup" (ngSubmit)="login()">
+      <div class="mb-3">
+        <label for="emailUser" class="form-label">Correo electronico</label>
+        <input
+          type="email"
+          class="form-control"
+          id="emailUser"
+          aria-describedby="emailUserHelp"
+          formControlName="email"
+          [class.is-invalid]="_formGroupControls['email'].errors && _formGroupControls['email'].touched">
+        <div id="emailUserHelp" class="invalid-feedback" *ngIf="_formGroupControls['email'].errors && _formGroupControls['email'].touched">
+          <div *ngIf="_formGroupControls['email'].errors?.['required']">El correo es requerido.</div>
+          <div *ngIf="_formGroupControls['email'].errors?.['pattern']">El correo es invalido.</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="userPass" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="userPass" aria-describedby="passUserHelp"
+               formControlName="password"
+               [class.is-invalid]="_formGroupControls['password'].errors && _formGroupControls['password'].touched"
+        >
+        <div id="passUserHelp" class="invalid-feedback" *ngIf="_formGroupControls['password'].errors && _formGroupControls['password'].touched">
+          <div *ngIf="_formGroupControls['password'].errors?.['required']">La contraseña es requerida.</div>
+        </div>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="viewPass" (click)="viewPassword('userPass')">
+        <label class="form-check-label" for="viewPass">Ver contraseña</label>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+  </section>
+</article>
