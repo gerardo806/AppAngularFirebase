@@ -1,6 +1,6 @@
 export interface QueriesDb{
   getAll<P>(): Promise<P>;
   getOne<Q>(id: string): Promise<Q>;
-  save<R, S>(data: S): Promise<R>;
+  save(data: any, nameCollection: string): Promise<boolean>;
   delete<T>(id: string): Promise<T>;
 }

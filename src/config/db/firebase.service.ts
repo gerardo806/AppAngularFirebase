@@ -1,6 +1,6 @@
 import { initializeApp, FirebaseApp } from 'firebase/app';
+import { getFirestore, Firestore } from 'firebase/firestore';
 import { getAnalytics, Analytics } from "firebase/analytics";
-
 import { Injectable } from '@angular/core';
 import {FirebaseConfig} from '../../models/db/FirebaseConfig';
 
@@ -29,5 +29,10 @@ export class FirebaseService {
   public analytics(): Analytics {
     const app: FirebaseApp = this.initializeApp();
     return getAnalytics(app);
+  }
+
+  public firestore(): Firestore {
+    const app: FirebaseApp = this.initializeApp();
+    return getFirestore(app);
   }
 }
